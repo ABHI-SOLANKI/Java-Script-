@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Events</title>
+  </head>
+  <body style="background-color: rgb(90, 86, 86); color: aliceblue">
+    <h2>Amazing Images</h2>
+    <div>
+      <ul id="Images">
+        <li>
+          <img src="img/leptop.jpeg" width="100px" id="leptop" alt="leptop" />
+        </li>
+        <li>
+          <img src="img/french-fries.jpg" id="fries" width="100px" />
+        </li>
+        <li>
+          <img src="img/pizaa1.jpg" id="pizaa" width="100px" />
+        </li>
+        <li>
+          <img src="img/sandwich1.jpg" id="sand" width="100px" />
+        </li>
+        <li>
+          <img src="img/burger1.jpg" id="burger" width="100px" />
+        </li>
+        <li style="font-size: larger; font-style: oblique">
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById('pizaa').onclick = function(){
+    //   alert("pizaa clcik")
+    // }
+
+    // attachEvent()
+    // jQuery - on
+
+    // type, timestamp, defauultPrevented
+    // target, toElement, srcElement, cureentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode
+
+    // document.getElementById("leptop").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("cliicked inside the ul");
+    //   },
+    //   false
+    // );
+    // document.getElementById("burger").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log("cliicked burger");
+    //     e.stopPropagation();
+    //   },
+    //   false
+    // );
+
+    // document.getElementById("google").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     e.preventDefault();
+    //     console.log("go cilcked");
+    //   },
+    //   false
+    // );
+
+    document.querySelector("#Images").addEventListener(
+      "click",
+      function (e) {
+        console.log(e.target.tagName);
+        if (e.target.tagName === "IMG") {
+          console.log(e.target.id);
+          
+          let removeIt = e.target.parentNode;
+          removeIt.remove();
+        }
+      },
+      false
+    );
+
+    // removeIt.parentNode.removeChild(removeIt)
+  </script>
+</html>

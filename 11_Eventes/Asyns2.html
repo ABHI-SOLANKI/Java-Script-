@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chai or JavaScript</h1>
+    <button id="start">Start</button>
+
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // let printInterval;
+
+    // function startPrinting() {
+    //   if (!printInterval) { // Prevent multiple intervals
+    //     printInterval = setInterval(() => {
+    //       console.log("Printing...");
+    //     }, 1000); // Print every second
+    //   }
+    // }
+
+    // function stopPrinting() {
+    //   clearInterval(printInterval);
+    //   printInterval = null;
+    //   console.log("Stopped.");
+    // }
+
+    // --------------------------------------------------------------------------------------
+
+    const saydate = function (str) {
+      console.log(str, Date.now());
+    };
+    // const intervalstart = document
+    //   .querySelector("#start")
+    //   .addEventListener("click", function (str) {
+    //     setInterval()
+    //   });
+
+    const intervalId = setInterval(saydate, 1000, "hi");
+    // document.querySelector("#stop").addEventListener("click", function (e) {
+    //   clearTimeout(intervalId);
+    //   console.log("STOPEEDD");
+    // });
+
+    let intervalid;
+    const intervalStart = function () {
+      intervalid = setInterval(saydate, 1000);
+      function saydate(){
+      }
+    };
+    const intervalStop = function () {
+      clearInterval(intervalId);
+    };
+
+    document.querySelector("#start").addEventListener("click", intervalStart);
+    document.querySelector("#stop").addEventListener("click", intervalStop);
+  </script>
+</html>
