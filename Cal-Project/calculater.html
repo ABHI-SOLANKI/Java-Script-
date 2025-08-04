@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Stylish Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .clear-btn {
+      background-color: #f44336;
+    }
+
+    .clear-btn:hover {
+      background-color: #e53935;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 22px;
+      text-align: center;
+      color: #222;
+    }
+
+    @media (max-width: 480px) {
+      .buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>🧮 Super Stylish Calculator</h2>
+
+    <input id="num1" type="number" placeholder="Enter first number">
+    <input id="num2" type="number" placeholder="Enter second number">
+
+    <div class="buttons">
+      <button onclick="add()">➕ Add</button>
+      <button onclick="subtract()">➖ Subtract</button>
+      <button onclick="multiply()">✖️ Multiply</button>
+      <button onclick="divide()">➗ Divide</button>
+      <button onclick="percent()">% Percent</button>
+      <button class="clear-btn" onclick="clearAll()">🔄 Clear</button>
+    </div>
+    <div class="result">Result: <span id="result">---</span></div>
+  </div>
+
+  <script>
+    function getValues() {
+      const a = parseFloat(document.getElementById("num1").value);
+      const b = parseFloat(document.getElementById("num2").value);
+      return [a, b];
+    }
+
+    function add() {
+      const [a, b] = getValues();
+      document.getElementById("result").innerText = a + b;
+    }
+
+    function subtract() {
+      const [a, b] = getValues();
+      document.getElementById("result").innerText = a - b;
+    }
+
+    function multiply() {
+      const [a, b] = getValues();
+      document.getElementById("result").innerText = a * b;
+    }
+
+    function divide() {
+      const [a, b] = getValues();
+      if (b === 0) {
+        document.getElementById("result").innerText = "❌ Cannot divide by 0!";
+      } else {
+        document.getElementById("result").innerText = (a / b).toFixed(2);
+      }
+    }
+
+    function percent() {
+      const [a, b] = getValues();
+      if (b === 0) {
+        document.getElementById("result").innerText = "❌ Cannot divide by 0!";
+      } else {
+        document.getElementById("result").innerText = ((a / b) * 100).toFixed(2) + "%";
+      }
+    }
+
+    function clearAll() {
+      document.getElementById("num1").value = "";
+      document.getElementById("num2").value = "";
+      document.getElementById("result").innerText = "---";
+    }
+  </script>
+
+</body>
+</html>
