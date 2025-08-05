@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gradient-to-b from-blue-50 to-indigo-100 min-h-screen font-sans"
+  >
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <!-- Landing Screen -->
+      <div id="landing" class="text-center fade-in">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ac0312a1-b1d1-4fd5-958e-09598e2221a4.png"
+            alt="Colorful quiz game banner with pencils, question marks and stars floating around"
+            class="w-full h-64 object-cover"
+          />
+        </div>
+        <h1 class="text-4xl font-bold text-indigo-800 mb-4">
+          Quiz Master Challenge
+        </h1>
+        <p class="text-lg text-gray-600 mb-8">
+          Test your knowledge with our exciting quiz! Answer 5 questions and
+          see how you score.
+        </p>
+        <button
+          id="startBtn"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-all transform hover:scale-105"
+        >
+          Start Quiz
+        </button>
+      </div>
+
+      <!-- Quiz Container (Hidden Initially) -->
+      <div id="quiz-container" class="hidden">
+        <div class="flex justify-between items-center mb-6">
+          <div class="text-lg font-semibold text-indigo-800">
+            Question <span id="current-question">1</span>/<span
+              id="total-questions"
+              >10</span
+            >
+          </div>
+          <div class="text-lg font-semibold">
+            Score: <span id="score">0</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-8">
+          <div
+            id="progress-bar"
+            class="bg-indigo-600 h-2.5 rounded-full progress-bar"
+            style="width: 0%"
+          ></div>
+        </div>
+
+        <!-- Timer (Hidden Initially) -->
+        <div id="timer-container" class="hidden mb-6">
+          <div class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-indigo-600 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span id="timer" class="font-semibold text-indigo-800">30</span>
+            seconds
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div
+          id="question-container"
+          class="bg-white rounded-xl shadow-lg p-6 mb-8 fade-in"
+        >
+          <h2
+            id="question"
+            class="text-xl font-semibold text-gray-800 mb-6"
+          ></h2>
+          <div id="options" class="space-y-4">
+            <!-- Options will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button
+          id="nextBtn"
+          class="hidden bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full w-full transition-all"
+        >
+          Next Question
+        </button>
+      </div>
+
+      <!-- Results Screen (Hidden Initially) -->
+      <div id="results" class="hidden text-center">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8 fade-in">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1377d387-77c7-461e-a8ac-629f9dc03f51.png"
+            alt="Celebration scene with flying confetti and trophy for quiz completion"
+            class="w-full h-48 object-contain mb-6"
+          />
+          <h2 class="text-3xl font-bold text-indigo-800 mb-4">
+            Quiz Completed!
+          </h2>
+          <p class="text-xl mb-6">
+            Your final score is
+            <span id="final-score" class="font-bold text-indigo-600">0</span
+            >/<span id="max-score">10</span>
+          </p>
+          <div id="score-message" class="text-lg font-medium mb-6"></div>
+          <div class="flex justify-center space-x-4">
+            <button
+              id="restartBtn"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-all"
+            >
+              Play Again
+            </button>
+            <button
+              id="viewAnswersBtn"
+              class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-full transition-all"
+            >
+              View Answers
+            </button>
+          </div>
+        </div>
+
+        <!-- Answers Section (Hidden Initially) -->
+        <div
+          id="answers-section"
+          class="hidden bg-white rounded-xl shadow-lg p-6 mt-6"
+        >
+          <h3 class="text-xl font-semibold text-indigo-800 mb-4">
+            Quiz Summary
+          </h3>
+          <div id="answers-list" class="space-y-6">
+            <!-- Answers will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
