@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Added for better box model handling */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(16, 19, 52);
+    color: aliceblue;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3vmin;
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+
+.box {
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    font-size: 8vmin;
+    color: rgb(85, 85, 168);
+    background-color: rgb(20, 31, 40);
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.box:hover {
+    background-color: rgba(85, 85, 168, 0.2); /* Lighten box on hover */
+}
+
+#reset-btn,
+#new-btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: cornflowerblue;
+    color: aliceblue;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+#reset-btn:hover,
+#new-btn:hover {
+    background-color: deepskyblue; /* Change color on hover */
+}
+
+#msg {
+    color: rgb(213, 213, 223);
+    font-size: 5vmin;
+    text-align: center; /* Center the message */
+    margin: 1rem 0; /* Add margin for spacing */
+    padding: 1rem; /* Add padding for better appearance */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for contrast */
+    border-radius: 0.5rem; /* Rounded corners */
+}
+
+.msg-container {
+    height: 30vmin;
+    display: flex;
+    flex-direction: column; /* Stack message and button vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center align items */
+}
+
+.hide {
+    display: none;
+}
