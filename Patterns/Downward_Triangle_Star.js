@@ -1,0 +1,11 @@
+let rows = 5;
+let pattern = "";
+
+for (let i = 1; i <= rows; i++) {
+  for (let j = 1; j <= 6 - i; j++) {
+    pattern +="*"
+  }
+  pattern +="\n"
+}
+console.log(pattern);
+
