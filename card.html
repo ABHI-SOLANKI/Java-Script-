@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>User Profile Card</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255,255,255,0.6);
+        }
+
+        button {
+            background-color: #00c6ff;
+            color: #fff;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0072ff;
+            transform: scale(1.05);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            animation: slideIn 0.8s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #fff;
+            animation: bounce 1s infinite alternate;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #eee;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>User Profile Form</h1>
+        <form id="userForm">
+            <input type="text" id="name" placeholder="Enter Name" required />
+            <input type="number" id="age" placeholder="Enter Age" required />
+            <input type="email" id="email" placeholder="Enter Email" required />
+            <input type="file" id="profilePic" accept="image/*" required />
+            <button type="submit">Create Profile Card</button>
+        </form>
+
+        <div id="cardContainer"></div>
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
+            const fileInput = document.getElementById('profilePic');
+            const cardContainer = document.getElementById('cardContainer');
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const imgDataUrl = reader.result;
+
+                const cardHTML = `
+                    <div class="card">
+                        <img src="${imgDataUrl}" alt="Profile Picture" />
+                        <h2>${name}</h2>
+                        <p>Age: ${age}</p>
+                        <p>Email: ${email}</p>
+                    </div>
+                `;
+
+                cardContainer.innerHTML = cardHTML;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+
+            document.getElementById('userForm').reset();
+        });
+    </script>
+
+</body>
+</html>
