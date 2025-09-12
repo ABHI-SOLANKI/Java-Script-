@@ -87,4 +87,26 @@ inp.addEventListener("input", function () {
 
   document.querySelector(".cards").innerHTML = "";
   showUsers(newUsers);
+
+});
+let inpt = document.querySelector(".inp");
+inp.addEventListener("input", function () {
+  let newUsers = users.filter((user) => {
+    return user.name.toLowerCase().startsWith(inp.value.toLowerCase());
+  });
+
+  const cardsContainer = document.querySelector(".cards");
+  cardsContainer.innerHTML = "";
+
+  if (newUsers.length === 0) {
+    // Agar koi user match nahi karta to message show karo
+    const notFoundMsg = document.createElement("p");
+    notFoundMsg.textContent = "😕 User not found";
+    notFoundMsg.style.textAlign = "center";
+    notFoundMsg.style.fontSize = "1.5em";
+    notFoundMsg.style.color = "gray";
+    cardsContainer.appendChild(notFoundMsg);
+  } else {
+    showUsers(newUsers);
+  }
 });
